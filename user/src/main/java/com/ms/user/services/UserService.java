@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+<<<<<<< HEAD
+=======
+    //
+>>>>>>> f218e10 (Criação das Classes)
     final UserRepository userRepository;
 
     public UserService(UserRepository userRepository){

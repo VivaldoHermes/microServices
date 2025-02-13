@@ -28,4 +28,8 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userModel));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f218e10 (Criação das Classes)
