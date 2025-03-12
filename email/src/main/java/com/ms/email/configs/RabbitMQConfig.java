@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbiTMQConfig {
+public class RabbitMQConfig {
 
     @Value("${broker.queue.email.name}") //fila determinada em application.properties
     private String queue;

@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmailConsumers {
-
+    //ANOTACOES
     @RabbitListener(queues = "${broker.queue.email.name}")
-    public void listenEmailQueue(@Payload EmailRecordDto emailRecordDto) {  //atalho para class CTRL+ESPAÇO
+    //ATALHO para class CTRL+ESPACO
+    public void listenEmailQueue(@Payload EmailRecordDto emailRecordDto) {
         System.out.println(emailRecordDto.emailTo());
     }
 }
