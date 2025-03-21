@@ -1,16 +1,28 @@
 package com.ms.email.consumers;
 
 import com.ms.email.dtos.EmailRecordDto;
+import com.ms.email.models.EmailModel;
+import com.ms.email.services.EmailService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.BeanUtils;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmailConsumers {
+public class EmailConsumer {
+
+    final EmailService emailService;
+
+    public EmailConsumer(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
     //ANOTACOES
     @RabbitListener(queues = "${broker.queue.email.name}")
     //ATALHO para class CTRL+ESPACO
     public void listenEmailQueue(@Payload EmailRecordDto emailRecordDto) {
-        System.out.println(emailRecordDto.emailTo());
+        var emailModel = new EmailModel();
+        BeanUtils.copyProperties(emailRecordDto, emailModel);
+        emailService.sendMail(emailModel);
     }
 }
